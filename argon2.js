@@ -3,9 +3,9 @@ const assert = require('assert')
 const { randomBytes, timingSafeEqual } = require('crypto')
 const { promisify } = require('util')
 
-const binary = require('@mapbox/node-pre-gyp')
+const { find } = require('@mapbox/node-pre-gyp/lib/pre-binding')
 const path = require('path')
-const bindingPath = binary.find(path.resolve(path.join(__dirname, './package.json')))
+const bindingPath = find(path.resolve(path.join(__dirname, './package.json')))
 const { hash: _hash, limits, types, names, version } = require(bindingPath) /* eslint-disable-line */
 
 const { deserialize, serialize } = require('@phc/format')
